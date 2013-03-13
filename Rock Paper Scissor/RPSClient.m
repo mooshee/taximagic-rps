@@ -73,7 +73,11 @@ NSString * const kRPSResultPrefix = @"You";
         }
     }
     if (_completionBlock) {
-        _completionBlock(playerThrow, computerThrow, result, nil);
+        if (playerThrow && computerThrow && result) {
+            _completionBlock(playerThrow, computerThrow, result, nil);
+        } else {
+            _completionBlock(nil, nil, nil, [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier] code:1 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"Invalid Response", NSLocalizedDescriptionKey ,nil]]);
+        }
     }
 }
 

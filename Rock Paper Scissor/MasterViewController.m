@@ -72,6 +72,12 @@
                 NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
                 abort();
             }
+        } else {
+            [[[UIAlertView alloc] initWithTitle:@"Request Failed"
+                                        message:error.localizedDescription
+                                       delegate:nil
+                              cancelButtonTitle:nil
+                              otherButtonTitles:nil, nil] show];
         }
     }];
 }
